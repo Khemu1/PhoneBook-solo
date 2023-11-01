@@ -1,0 +1,108 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"9e519a65-9137-488b-b3eb-3398d784e2da\" name=\"Changes\" comment=\"Almost done\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"CodeStyleSettingsInfer\">\r\n    <option name=\"done\" value=\"true\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectCodeStyleSettingsMigration\">\r\n    <option name=\"version\" value=\"2\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2XaAKP6RJYqnV0U4F3ihPrrzquv\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"9e519a65-9137-488b-b3eb-3398d784e2da\" name=\"Changes\" comment=\"\" />\r\n      <created>1698856753742</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1698856753742</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Almost done\">\r\n      <created>1698864562220</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1698864562220</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Almost done\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Almost done\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/untitled$Main.ic\" NAME=\"Main Coverage Results\" MODIFIED=\"1698864493666\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 32a4524e3e84b5915fcb4bc56009b23c31a63d70)
++++ b/.idea/workspace.xml	(date 1698865057745)
+@@ -1,7 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="9e519a65-9137-488b-b3eb-3398d784e2da" name="Changes" comment="Almost done" />
++    <list default="true" id="9e519a65-9137-488b-b3eb-3398d784e2da" name="Changes" comment="Almost done">
++      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -54,7 +56,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1698864562220</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Almost done">
++      <created>1698864837780</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1698864837780</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -69,10 +78,11 @@
+     </option>
+   </component>
+   <component name="VcsManagerConfiguration">
++    <MESSAGE value="done" />
+     <MESSAGE value="Almost done" />
+     <option name="LAST_COMMIT_MESSAGE" value="Almost done" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+-    <SUITE FILE_PATH="coverage/untitled$Main.ic" NAME="Main Coverage Results" MODIFIED="1698864493666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
++    <SUITE FILE_PATH="coverage/untitled$Main.ic" NAME="Main Coverage Results" MODIFIED="1698864940261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.*;\r\n\r\npublic class Main {\r\n    public static void main(String[] args) {\r\n        Scanner in = new Scanner(System.in);\r\n        Contacts obj = new Contacts();\r\n        boolean exit = false;\r\n        System.err.println(\"Please note that names must only consist of English letters, and your phone number must be Egyptian.\");\r\n\r\n        while (!exit) {\r\n            System.out.println(\"To add Contact, press 1\");\r\n            System.out.println(\"To edit a specific contact, press 2\");\r\n            System.out.println(\"To print a specific contact, press 3\");\r\n            System.out.println(\"To print all contacts, press 4\");\r\n            System.out.println(\"To print the number of contacts press 5\");\r\n            System.out.println(\"To exit, press 6\");\r\n            String input = in.next();\r\n\r\n            switch (input) {\r\n                case \"1\" -> {\r\n                    System.out.println(\"Please Enter your name and your phone number\");\r\n\r\n                    boolean validName = false;\r\n                    String name = \"\";\r\n\r\n                    while (!validName) {\r\n                        name = in.next();\r\n                        if (Contact.validName(name)) {\r\n                            System.out.println(\"Name has been added\");\r\n                            validName = true;\r\n                        } else {\r\n                            System.err.println(\"Invalid name. Please enter a valid name.\");\r\n                        }\r\n                    }\r\n\r\n                    boolean validPhone = false;\r\n                    String phone = \"\";\r\n\r\n                    while (!validPhone) {\r\n                        phone = in.next();\r\n                        if (Contact.validPhone(phone)) {\r\n                            validPhone = true;\r\n\r\n                            if (obj.isDuplicated(phone)) {\r\n                                System.err.println(\"Duplicated Phone number. Please enter another one.\");\r\n                                validPhone = false; // Reset the validPhone flag to continue the while loop.\r\n                            }\r\n                        } else {\r\n                            System.err.println(\"Invalid Phone Number. Please enter a valid one.\");\r\n                        }\r\n                    }\r\n\r\n                    obj.addContact(name, phone);\r\n                }\r\n                case \"2\" -> {\r\n                    System.out.println(\"Please enter the index of the contact you want to edit\");\r\n                    boolean validIndex = false;\r\n                    int index = 0;\r\n\r\n                    while (!validIndex) {\r\n                        index = in.nextInt();\r\n                        if (obj.validIndex(index)) {\r\n                            validIndex = true;\r\n                        } else {\r\n                            System.err.println(\"This contact doesn't exist. Please enter a valid index.\");\r\n                        }\r\n                    }\r\n\r\n                    boolean validName = false;\r\n                    String name = \"\";\r\n\r\n                    while (!validName) {\r\n                        System.out.println(\"Please enter the new name\");\r\n                        name = in.next();\r\n                        if (Contact.validName(name)) {\r\n                            System.out.println(\"Name has been updated\");\r\n                            validName = true;\r\n                        } else {\r\n                            System.err.println(\"Invalid name. Please enter a valid name.\");\r\n                        }\r\n                    }\r\n\r\n                    boolean validPhone = false;\r\n                    String phone = \"\";\r\n\r\n                    while (!validPhone) {\r\n                        phone = in.next();\r\n                        if (Contact.validPhone(phone)) {\r\n                            validPhone = true;\r\n\r\n                            if (obj.isDuplicated(phone)) {\r\n                                System.err.println(\"Duplicated Phone number. Please enter another one.\");\r\n                                validPhone = false; // Reset the validPhone flag to continue the while loop.\r\n                            }\r\n                        } else {\r\n                            System.err.println(\"Invalid Phone Number. Please enter a valid one.\");\r\n                        }\r\n                    }\r\n\r\n                    obj.editContact(index, name, phone);\r\n                }\r\n                case \"3\" -> {\r\n                    System.out.println(\"Please enter the index of the contact you want to print\");\r\n                    boolean validIndex = false;\r\n                    int index = 0;\r\n\r\n                    while (!validIndex) {\r\n                        index = in.nextInt();\r\n                        if (obj.validIndex(index)) {\r\n                            validIndex = true;\r\n                        } else {\r\n                            System.out.println(\"This contact doesn't exist. Please enter a valid index.\");\r\n                        }\r\n                    }\r\n\r\n                    obj.printContact(index);\r\n                }\r\n                case \"4\" -> {\r\n                    obj.printAll();\r\n                }\r\n                case \"5\"->  {\r\n                    System.out.println(\"You have \" + obj.getContacts().size() + \" contact\" + (obj.getContacts().size() > 1 ? \"s\" : \"\"));\r\n                }\r\n                case \"6\" -> {\r\n                    exit = true;\r\n                }\r\n                default ->\r\n                        System.out.println(\"Please enter a number between 1-5\");\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java	(revision 32a4524e3e84b5915fcb4bc56009b23c31a63d70)
++++ b/src/Main.java	(date 1698865057784)
+@@ -11,9 +11,10 @@
+             System.out.println("To add Contact, press 1");
+             System.out.println("To edit a specific contact, press 2");
+             System.out.println("To print a specific contact, press 3");
+-            System.out.println("To print all contacts, press 4");
+-            System.out.println("To print the number of contacts press 5");
+-            System.out.println("To exit, press 6");
++            System.out.println("To delete a  specific press 4");
++            System.out.println("To print all contacts, press 5");
++            System.out.println("To print the number of contacts press 6");
++            System.out.println("To exit, press 7");
+             String input = in.next();
+ 
+             switch (input) {
+@@ -115,13 +116,28 @@
+ 
+                     obj.printContact(index);
+                 }
+-                case "4" -> {
+-                    obj.printAll();
++                case "4"->  {
++                    System.out.println("Please enter the index of the contact you want to edit");
++                    boolean validIndex = false;
++                    int index = 0;
++
++                    while (!validIndex) {
++                        index = in.nextInt();
++                        if (obj.validIndex(index)) {
++                            validIndex = true;
++                        } else {
++                            System.err.println("This contact doesn't exist. Please enter a valid index.");
++                        }
++                    }
++                    obj.deleteContact(index);
+                 }
+-                case "5"->  {
++                case "5" -> {
++                    obj.printAll();
++                }
++                case "6"->  {
+                     System.out.println("You have " + obj.getContacts().size() + " contact" + (obj.getContacts().size() > 1 ? "s" : ""));
+                 }
+-                case "6" -> {
++                case "7" -> {
+                     exit = true;
+                 }
+                 default ->
