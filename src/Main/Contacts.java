@@ -31,7 +31,7 @@ public class Contacts {
 
     }
     public void editContact(int index, String name, String phone)  {
-        if ((index-1)>=0 && index-1< contacts.size() )  {
+        if ((index)>=0 && index< contacts.size() )  {
             Contact contact= contacts.get(index);
             contact.setName(name);
             contact.setPhone(phone);
@@ -42,8 +42,8 @@ public class Contacts {
         }
     }
     public void deleteContact(int index)  {
-        if ((index-1)>=0 && index-1< contacts.size() )  {
-            contacts.remove(index-1);
+        if ((index)>=0 && index< contacts.size() )  {
+            contacts.remove(index);
             System.out.println("Contact has been deleted");
         }
         else    {
@@ -51,7 +51,7 @@ public class Contacts {
         }
     }
     public boolean validIndex(int index) {  // this method can't be static because you're trying to access contacts which is static
-        return (index - 1) >= 0 && index - 1 < contacts.size();
+        return (index) >= 0 && index  < contacts.size();
     }
     public boolean isDuplicated(String phone) {
         if (new Contact().validPhone(phone)) {
@@ -64,6 +64,17 @@ public class Contacts {
         return false;
     }
 
+    public boolean isDuplicated(int editedIndex, String phone) {
+        if (new Contact().validPhone(phone)) {
+            for (int i = 0; i < contacts.size(); i++) {
+                if (i != editedIndex && contacts.get(i).getPhone().equals(phone)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
 
 
     public void printAll()  {
@@ -81,9 +92,9 @@ public class Contacts {
 
     }
     public void printContact(int index)  {
-        if ((index-1)>=0 && index-1< contacts.size() )  {
-            System.out.println("Contact Name :"+contacts.get(index-1).getName());
-            System.out.println(" Contact Number : " +contacts.get(index-1).getPhone());
+        if ((index)>=0 && index< contacts.size() )  {
+            System.out.println("Contact Name :"+contacts.get(index).getName());
+            System.out.println(" Contact Number : " +contacts.get(index).getPhone());
         }
         else {
             System.err.println("this Contact doesn't exist");
