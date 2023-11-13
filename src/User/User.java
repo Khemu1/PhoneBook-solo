@@ -3,8 +3,6 @@ package User;
 import Main.Admin;
 
 public class User extends Admin {
-    String name;
-    String phone;
 
     public User() {
     }
