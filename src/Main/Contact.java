@@ -17,9 +17,6 @@ public class Contact {
         if (validName(name))    {
             this.name = name;
         }
-        else    {
-            System.err.println("name must contain only english letters");
-        }
     }
 
     public String getPhone() {
@@ -29,9 +26,6 @@ public class Contact {
     public void setPhone(String phone) {
         if (validPhone(phone))   {
             this.phone = phone;
-        }
-        else    {
-            System.out.println("length must 11 numbers and it must be an Egyptian number ");
         }
     }
     boolean validPhone(String phone) {
@@ -50,7 +44,7 @@ public class Contact {
         if (name.matches("[a-zA-Z ]*"))   {
             return true;
         }
-        System.err.println("Invalid Name");
+        System.err.println("Invalid Name, please enter a valid one");
         return false;
     }
 }

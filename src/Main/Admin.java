@@ -1,18 +1,28 @@
 package Main;
+
 import java.util.*;
+
 public class Admin extends Contact {
-    private String name = "admin";
+    private String userName = "admin";
     private String pass = "9513572680";
     private ArrayList<String> defaultVali = new ArrayList<>(Arrays.asList("010", "011", "012", "015"));
     private ArrayList<String> changeableVali = new ArrayList<>();
 
-    public String getName() {
-        return this.name;
+    public Admin() {
+    }
+
+    public Admin(String name, String phone) {
+        super(name, phone);
+    }
+
+    public String getuserName() {
+        return this.userName;
     }
 
     public String getPass() {
         return this.pass;
     }
+
     void addPrefixes(ArrayList<String> prefixes) {
         if (prefixes.isEmpty()) {
             return;
@@ -38,6 +48,17 @@ public class Admin extends Contact {
                 printMessage(prefix + " has been removed");
                 changeableVali.remove(prefix);
             }
+        }
+    }
+
+    void printPrefixes() {
+        if (this.changeableVali.isEmpty()) {
+            System.out.println("No prefixes at the current time");
+            System.out.println("System is working on the default mode");
+            return;
+
+        } else {
+            System.out.println(changeableVali);
         }
     }
 
