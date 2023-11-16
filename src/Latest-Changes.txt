@@ -1,0 +1,5 @@
+added a separate class for admin methods to make the terminal look more friendly
+fixed the problem where validPhone wasn't working as expected by removing the new instance of the Admin class and instead using instance that is saved into an var
+modified the regex to be dynamic
+added and finished all admin privileges
+made the arraylists in the Admin class static
