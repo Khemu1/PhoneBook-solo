@@ -12,7 +12,7 @@ public class Main extends Methods {
 
         System.err.println(
                 "Please note that the system is currently running on the default parameters which works for Egyptian phone numbers");
-                System.out.println();
+        System.out.println();
 
         while (!exit) {
             switch (Methods.getUserTypeInput(in, isAdmin)) {
@@ -40,7 +40,7 @@ public class Main extends Methods {
                     }
                 }
                 case "2" -> {
-                    Methods.handleUserMode(in, obj,admin);
+                    Methods.handleUserMode(in, obj, admin);
                 }
                 default -> {
                     if (isAdmin) {
@@ -50,9 +50,9 @@ public class Main extends Methods {
                         System.out.println("Invalid input. Please enter 1 for admin or 2 for user.");
                     }
                 }
-                
+
             }
-            if (isAdmin) {
+            while (isAdmin) {
                 System.out.println();
 
                 System.out.println("To add a contact, press 1");
@@ -67,11 +67,12 @@ public class Main extends Methods {
                 String adminInput = in.next();
 
                 switch (adminInput) {
+
                     case "1" -> {
-                        Methods.adminAdding(in, obj,admin);
+                        Methods.adminAdding(in, obj, admin);
                     }
                     case "2" -> {
-                        Methods.AdminEditing(in, obj,admin);
+                        Methods.AdminEditing(in, obj, admin);
                     }
                     case "3" -> {
                         Methods.AdminDeleting(in, obj);
@@ -130,6 +131,7 @@ public class Main extends Methods {
                     default -> System.out.println("Please enter a number between 1-6");
                 }
             }
+
         }
     }
 }

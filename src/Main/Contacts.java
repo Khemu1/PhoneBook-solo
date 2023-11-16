@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import User.User;
 
 public class Contacts {
-    private ArrayList<Contact> contacts = new ArrayList<>();
+    private static ArrayList<Contact> contacts = new ArrayList<>();
 
     public Contacts() {
     }

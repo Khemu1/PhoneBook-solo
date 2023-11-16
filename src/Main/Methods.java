@@ -113,6 +113,10 @@ public class Methods extends Admin {
     static void AdminEditing(Scanner in, Contacts obj, Admin admin) {
         boolean again = true;
         while (again) {
+            if (obj.getContacts().isEmpty()) {
+                System.out.println("Nothing here to edit, Exiting....");
+                break;
+            }
             System.out.println("Please enter the Contact ID of the contact you want to edit");
             boolean validIndex = false;
             int index = 0;
@@ -173,8 +177,9 @@ public class Methods extends Admin {
     }
 
     static void AdminDeleting(Scanner in, Contacts obj) {
-        System.out.println("Would you like to delete all contacts? enter yes otherwise no");
+        System.out.println("Would you like to delete all contacts at once? enter yes otherwise no");
         String isAll = "";
+        boolean yes = false;
         boolean validInput2 = false;
         while (!validInput2) {
             isAll = in.next().toLowerCase();
@@ -182,16 +187,25 @@ public class Methods extends Admin {
                 System.out.println("invalid input, please Enter Yes or No");
             } else if (isAll.equals("no")) {
                 validInput2 = true;
-                System.out.println("Exiting");
+                System.out.println("Switching to manual deleting");
             } else if (isAll.equals("yes")) {
                 validInput2 = true;
+                yes = true;
             }
         }
         boolean again = true;
         while (again) {
-            if (obj.getContacts().isEmpty()) {
-                System.out.println("No contacts to delete exiting");
-                again = false;
+            if (!obj.getContacts().isEmpty() && yes) {
+                obj.getContacts().clear();
+                System.out.println("All contacts have been deleted, Exiting....");
+                break;
+            }
+            if (obj.getContacts().isEmpty() && !yes) {
+                System.out.println("No Contacts to delete, Exiting....");
+                break;
+            } else if (obj.getContacts().isEmpty() && yes) {
+                System.out.println("No Contacts to delete, Exiting....");
+                break;
             } else {
                 System.out.println("Please enter the Contact ID of the contact you want to delete");
                 boolean validIndex = false;
@@ -227,7 +241,13 @@ public class Methods extends Admin {
 
     static void AdminPrinting(Scanner in, Contacts obj) {
         boolean again = true;
+
         while (again) {
+            if (obj.getContacts().isEmpty()) {
+                System.out.println("Nothing to print, Exiting...");
+                break; // exit the loop when the array is empty
+            }
+
             System.out.println("Please enter the Contact ID of the contact you want to print");
             boolean validIndex = false;
             int index = 0;
@@ -240,13 +260,15 @@ public class Methods extends Admin {
             }
 
             obj.printContact(index);
-            System.out.println("would you like to print other Contacts ? enter Yes otherwise enter No");
+
+            System.out.println("Would you like to print other Contacts? Enter 'Yes' otherwise enter 'No'");
             String input = "";
             boolean validInput = false;
+
             while (!validInput) {
                 input = in.next().toLowerCase();
                 if (input.length() != 2 && !input.equals("no") && !input.equals("yes")) {
-                    System.out.println("invalid input");
+                    System.out.println("Invalid input");
                 } else if (input.equals("no")) {
                     validInput = true;
                     again = false;
@@ -260,7 +282,7 @@ public class Methods extends Admin {
 
     static void AdminPrintingAmountOfContacts(Contacts obj) {
         System.out.println("You have " + obj.getContacts().size() + " contact" +
-                (obj.getContacts().size() > 1 ? "s" : ""));
+                (obj.getContacts().size() > 2 ? "s" : ""));
     }
 
     static void adminAddingPrefixes(Scanner in, Admin admin) {

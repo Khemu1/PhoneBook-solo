@@ -4,11 +4,11 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class Admin extends Contact {
-    private final String userName = "1";
-    private final String pass = "1";
+    private final String userName = "admin";
+    private final String pass = "admin";
     private static ArrayList<String> defaultVali = new ArrayList<>(Arrays.asList("010", "011", "012", "015"));
-    private static ArrayList<String> changeablePrefixes = new ArrayList<>(Arrays.asList("014", "015"));
-    private static ArrayList<String> changeableLength = new ArrayList<>(Arrays.asList("11", "12"));
+    private static ArrayList<String> changeablePrefixes = new ArrayList<>();
+    private static ArrayList<String> changeableLength = new ArrayList<>();
 
     public Admin() {
     }
@@ -153,14 +153,28 @@ public class Admin extends Contact {
         } else if (!changeablePrefixes.isEmpty() && changeableLength.isEmpty()) {
             regex = "^(" + getPrefixRegex() + "\\d{8})$";
         } else {
-            regex = "^(" + getDefaultPrefixRegex() + "\\d{8})$";
+            regex = "^(" + getDefaultPrefixRegex() + ")\\d{8}$";
         }
         if (phone.matches(regex)) {
             return true;
         } else {
-            System.out.println(
-                    "Invalid phone number. Please ensure your phone number starts with the following prefixes: "
-                            + changeablePrefixes + " and has a length from the following: " + changeableLength);
+            if (!changeablePrefixes.isEmpty() && !changeableLength.isEmpty()) {
+                System.out.println(
+                        "Invalid phone number. Please ensure your phone number starts with the following prefixes: "
+                                + changeablePrefixes + " and has a length from the following: " + changeableLength);
+            } else if (changeablePrefixes.isEmpty() && !changeableLength.isEmpty()) {
+                System.out.println(
+                        "Invalid phone number. Please ensure your phone number starts with the following prefixes: "
+                                + defaultVali + " and has a length from the following: " + changeableLength);
+            } else if (!changeablePrefixes.isEmpty() && changeableLength.isEmpty()) {
+                System.out.println(
+                        "Invalid phone number. Please ensure your phone number starts with the following prefixes: "
+                                + changeablePrefixes + " and has a length from the following: " + "[" + 8 + "]");
+            } else {
+                System.out.println(
+                        "Invalid phone number. Please ensure your phone number starts with the following prefixes: "
+                                + defaultVali + " and has a length from the following: " + "[" + 8 + "]");
+            }
             return false;
         }
     }
@@ -200,7 +214,6 @@ public class Admin extends Contact {
             prefixRegex.append(prefix).append("|");
         }
         prefixRegex.setLength(prefixRegex.length() - 1);
-        System.out.println(prefixRegex.toString());
         return prefixRegex.toString().trim();
     }
 }
