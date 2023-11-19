@@ -94,7 +94,7 @@ class Methods extends User {
         }
     }
 
-    static void displayAdminMenu(BufferedReader read, Contacts obj, User admin, boolean isAdmin){
+    static void displayAdminMenu(BufferedReader read, Contacts obj, User admin, boolean isAdmin) {
         System.out.println();
 
         System.out.println("To add a contact, press 1");
@@ -168,7 +168,7 @@ class Methods extends User {
                 }
             }
             case "8" -> {
-                printFile();
+                printFile() ;
             }
             case "9" -> {
                 isAdmin = false;
@@ -455,25 +455,30 @@ class Methods extends User {
         admin.printPrefixes();
     }
 
-    static void printFile() throws Exception {
-        if (!Contacts.contacts.isEmpty()) {
-            File file = new File("src/Contacts/Contacts.txt");
-            if (file.exists()) {
-                file.delete();
+    static void printFile() {
+        try {
+            if (!Contacts.contacts.isEmpty()) {
+                File file = new File("src/Contacts/Contacts.txt");
+                if (file.exists()) {
+                    file.delete();
+                }
+                PrintWriter write = new PrintWriter(file);
+                for (int i = 0; i < Contacts.contacts.size(); i++) {
+                    write.println("Contact ID: " + (i + 1));
+                    write.println("Contact Name: " + Contacts.contacts.get(i).getName());
+                    write.println("Contact Number: " + Contacts.contacts.get(i).getPhone()
+                            + (validPhoneForPrint(Contacts.contacts.get(i).getPhone()) ? " (valid) "
+                                    : " \"Invalid phone number please Contact the user\""));
+                    write.println();
+                }
+                System.out.println("Contacts printed to file: " + file.getAbsolutePath());
+                write.close();
+            } else {
+                System.out.println("No Contacts to print");
             }
-            PrintWriter write = new PrintWriter(file);
-            for (int i = 0; i < Contacts.contacts.size(); i++) {
-                write.println("Contact ID: " + (i + 1));
-                write.println("Contact Name: " + Contacts.contacts.get(i).getName());
-                write.println("Contact Number: " + Contacts.contacts.get(i).getPhone()
-                        + (validPhoneForPrint(Contacts.contacts.get(i).getPhone()) ? " (valid) "
-                                : " \"Invalid phone number please Contact the user\""));
-                write.println();
-            }
-            System.out.println("Contacts printed to file: " + file.getAbsolutePath());
-            write.close();
-        } else {
-            System.out.println("No Contacts to print");
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the exception as needed, e.g., log it, show an error message, etc.
         }
     }
     // this method i used to catch exceptions you altretavlity just use throws Exception on every method
