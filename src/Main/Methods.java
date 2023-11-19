@@ -94,7 +94,7 @@ class Methods extends User {
         }
     }
 
-    static void displayAdminMenu(BufferedReader read, Contacts obj, User admin, boolean isAdmin) throws Exception {
+    static void displayAdminMenu(BufferedReader read, Contacts obj, User admin, boolean isAdmin){
         System.out.println();
 
         System.out.println("To add a contact, press 1");
@@ -455,7 +455,7 @@ class Methods extends User {
         admin.printPrefixes();
     }
 
-    static void printFile() throws Exception {
+    static void printFile() BufferedReader read, Exception {
         if (!Contacts.contacts.isEmpty()) {
             File file = new File("src/Contacts/Contacts.txt");
             if (file.exists()) {
@@ -476,6 +476,7 @@ class Methods extends User {
             System.out.println("No Contacts to print");
         }
     }
+    // this method i used to catch exceptions you altretavlity just use throws Exception on every method
     private static String readLine(BufferedReader reader) {
         String line = null;
         try {
