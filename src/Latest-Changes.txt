@@ -3,3 +3,9 @@ fixed the problem where validPhone wasn't working as expected by removing the ne
 modified the regex to be dynamic
 added and finished all admin privileges
 made the arraylists in the Admin class static
+
+11/19/2023
+
+removed all the methods from  Main and instead used calling from methods
+removed User class and renamed Admin to User
+Admin a boolean attribute isAdmin to check if for user and Admin modes

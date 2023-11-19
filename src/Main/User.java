@@ -1,54 +1,62 @@
 package Main;
 
 import java.util.*;
-import java.util.regex.Pattern;
 
-public class Admin extends Contact {
+public class User extends Contact {
     private final String userName = "admin";
     private final String pass = "admin";
+    private boolean isAdmin = false;
     private static ArrayList<String> defaultVali = new ArrayList<>(Arrays.asList("010", "011", "012", "015"));
     private static ArrayList<String> changeablePrefixes = new ArrayList<>();
     private static ArrayList<String> changeableLength = new ArrayList<>();
 
-    public Admin() {
+    public User() {
     }
 
-    public void checkValidity(String nambah) {
-        // boolean isValid = false;
-        System.out.println(changeablePrefixes);
-        ArrayList<String> lenghtList = new ArrayList<>();
-        ArrayList<String> prefixList = new ArrayList<>();
-
-        if (changeableLength.isEmpty()) {
-            lenghtList.add("8");
-        }
-        if (changeablePrefixes.isEmpty()) {
-            prefixList.addAll(defaultVali);
-        }
-
-        lenghtList.addAll(changeableLength);
-        prefixList.addAll(changeablePrefixes);
-
-        if (!lenghtList.contains(String.valueOf(nambah.length()))) {
-            System.out.println("INVALID");
-            return;
-        }
-
-        String sub = nambah.substring(0, 4);
-        if (prefixList.contains(sub)) {
-            System.out.println("INVALID");
-        }
-
-        System.out.println("VALID WOOO");
-
-        // return isValid;
+    public boolean getIsAdmin() {
+        return this.isAdmin;
     }
 
-    public Admin(String name, String phone) {
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    // public void checkValidity(String nambah) { Don't mind it
+    // // boolean isValid = false;
+    // System.out.println(changeablePrefixes);
+    // ArrayList<String> lenghtList = new ArrayList<>();
+    // ArrayList<String> prefixList = new ArrayList<>();
+
+    // if (changeableLength.isEmpty()) {
+    // lenghtList.add("8");
+    // }
+    // if (changeablePrefixes.isEmpty()) {
+    // prefixList.addAll(defaultVali);
+    // }
+
+    // lenghtList.addAll(changeableLength);
+    // prefixList.addAll(changeablePrefixes);
+
+    // if (!lenghtList.contains(String.valueOf(nambah.length()))) {
+    // System.out.println("INVALID");
+    // return;
+    // }
+
+    // String sub = nambah.substring(0, 4);
+    // if (prefixList.contains(sub)) {
+    // System.out.println("INVALID");
+    // }
+
+    // System.out.println("VALID WOOO");
+
+    // // return isValid;
+    // }
+
+    public User(String name, String phone) {
         super(name, phone);
     }
 
-    public String getuserName() {
+    public String getUserName() {
         return this.userName;
     }
 

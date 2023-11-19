@@ -2,7 +2,6 @@ package Main;
 
 import java.util.ArrayList;
 
-import User.User;
 
 public class Contacts {
     private static ArrayList<Contact> contacts = new ArrayList<>();
@@ -25,11 +24,6 @@ public class Contacts {
     }
 
     protected void addContact(User obj) {
-        contacts.add(new Contact(obj.getName(), obj.getPhone()));
-        System.out.println("Contact added");
-    }
-
-    protected void addContact(Admin obj) {
         contacts.add(new Contact(obj.getName(), obj.getPhone()));
         System.out.println("Contact added");
     }
