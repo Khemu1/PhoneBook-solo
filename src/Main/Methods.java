@@ -1,24 +1,25 @@
 package Main;
 
 import java.util.*;
+import java.io.*;
 
 class Methods extends User {
-    static String getUserTypeInput(Scanner in, boolean isUser) {
+    static String getUserTypeInput(BufferedReader read, boolean isUser) {
         if (!isUser) {
             System.out.println("To enter the admin mode, please enter 1");
             System.out.println("To enter the User mode, please enter 2");
-            return in.next();
+            return readLine(read);
         }
         return "";
     }
 
-    static void handleAdminLogin(Scanner in, User admin) {
+    static void handleAdminLogin(BufferedReader read, User admin) {
         boolean valid = false;
         while (!valid) {
             System.out.println("Please enter the admin username: ");
-            String adminUsername = in.next();
+            String adminUsername = readLine(read);
             System.out.println("Please enter the admin password: ");
-            String adminPassword = in.next();
+            String adminPassword = readLine(read);
 
             if (adminUsername.equals(admin.getUserName()) && adminPassword.equals(admin.getPass())) {
                 System.out.println("Admin logged in");
@@ -27,7 +28,7 @@ class Methods extends User {
             } else {
                 System.out.println(
                         "Invalid username or password. Try again by entering any key or enter 1 to exit.");
-                if (in.next().equals("1")) {
+                if (readLine(read).equals("1")) {
                     admin.setIsAdmin(false);
                     valid = true;
                 }
@@ -44,7 +45,7 @@ class Methods extends User {
         }
     }
 
-    static void handleUserMode(Scanner in, Contacts obj, User admin) {
+    static void handleUserMode(BufferedReader read, Contacts obj, User admin) {
         boolean again = true;
         while (again) {
             System.out.println("please Enter the name and phone number ");
@@ -52,7 +53,7 @@ class Methods extends User {
             String name = "";
 
             while (!validName) {
-                name = in.next();
+                name = readLine(read);
                 if (Contact.validName(name)) {
                     System.out.println("Name has been added");
                     validName = true;
@@ -63,7 +64,7 @@ class Methods extends User {
             String phone = "";
 
             while (!validPhone) {
-                phone = in.next();
+                phone = readLine(read);
                 if (admin.validPhone(phone)) {
                     validPhone = true;
 
@@ -79,7 +80,7 @@ class Methods extends User {
             String input = "";
             boolean validInput = false;
             while (!validInput) {
-                input = in.next().toLowerCase();
+                input = readLine(read).toLowerCase();
                 if (input.length() != 2 && !input.equals("no") && !input.equals("yes")) {
                     System.out.println("invalid input");
                 } else if (input.equals("no")) {
@@ -93,35 +94,36 @@ class Methods extends User {
         }
     }
 
-    static void displayAdminMenu(Scanner in, Contacts obj, User admin, boolean isAdmin) {
+    static void displayAdminMenu(BufferedReader read, Contacts obj, User admin, boolean isAdmin) throws Exception {
         System.out.println();
 
         System.out.println("To add a contact, press 1");
         System.out.println("To edit a specific contact, press 2");
         System.out.println("To delete a contact press 3");
-        System.out.println("To print a specific contact, press 4");
-        System.out.println("To print all contacts, press 5");
+        System.out.println("To display a specific contact, press 4");
+        System.out.println("To display all contacts, press 5");
         System.out.println("To print the number of contacts, press 6");
         System.out.println("to enter enter validation mode enter 7");
-        System.out.println("To exit admin mode, press 8");
+        System.out.println("To print the Contacts print 8 ");
+        System.out.println("To exit admin mode, press 9");
 
-        String adminInput = in.next();
+        String adminInput = readLine(read);
 
         switch (adminInput) {
 
             case "1" -> {
-                Methods.adminAdding(in, obj, admin);
+                Methods.adminAdding( read,  obj,  admin) ;
             }
             case "2" -> {
-                Methods.adminEditing(in, obj, admin);
+                Methods.adminEditing(read, obj, admin);
             }
             case "3" -> {
-                Methods.adminDeleting(in, obj);
+                Methods.adminDeleting(read, obj);
             }
             case "4" -> {
-                Methods.adminPrinting(in, obj,admin);
+                Methods.adminDisplay(read, obj, admin);
             }
-            case "5" -> admin.printAll();
+            case "5" -> admin.displayAll();
             case "6" -> Methods.adminPrintingAmountOfContacts(obj);
             case "7" -> {
                 boolean exit1 = false;
@@ -134,26 +136,26 @@ class Methods extends User {
                     System.out.println("To add phone length enter 5");
                     System.out.println("To remove phone length enter 6");
                     System.out.println("To exit validation mode enter 7");
-                    String input = in.next();
+                    String input = readLine(read);
 
                     switch (input) {
                         case "1" -> {
                             Methods.adminPrintingPrefixes(admin);
                         }
                         case "2" -> {
-                            Methods.adminAddingPrefixes(in, admin);
+                            Methods.adminAddingPrefixes(read, admin);
                         }
                         case "3" -> {
-                            Methods.adminRemovingPrefixes(in, admin);
+                            Methods.adminRemovingPrefixes(read, admin);
                         }
                         case "4" -> {
                             Methods.adminPrintingLength(admin);
                         }
                         case "5" -> {
-                            Methods.adminAddingLength(in, admin);
+                            Methods.adminAddingLength(read, admin);
                         }
                         case "6" -> {
-                            Methods.adminRemovingLength(in, admin);
+                            Methods.adminRemovingLength(read, admin);
                         }
                         case "7" -> {
                             System.out.println("Exiting validation mode");
@@ -166,51 +168,51 @@ class Methods extends User {
                 }
             }
             case "8" -> {
+                printFile();
+            }
+            case "9" -> {
                 isAdmin = false;
                 admin.setIsAdmin(isAdmin);
                 System.out.println("User logged out");
             }
-            default -> System.out.println("Please enter a number between 1-8");
+            default -> System.out.println("Please enter a number between 1-9");
         }
     }
 
-    static void adminAdding(Scanner in, Contacts obj, User admin) {
+    static void adminAdding(BufferedReader read, Contacts obj, User admin) {
         Boolean again = true;
         while (again) {
-            System.out.println("please Enter the name and phone number ");
+            System.out.println("Please enter the name and phone number ");
             boolean validName = false;
             String name = "";
-
+    
             while (!validName) {
-                name = in.next();
+                name = readLine(read);
                 if (Contact.validName(name)) {
                     System.out.println("Name has been added");
                     validName = true;
                 }
             }
-
             boolean validPhone = false;
             String phone = "";
-
             while (!validPhone) {
-                phone = in.next();
+                phone = readLine(read);
                 if (admin.validPhone(phone)) {
                     validPhone = true;
-
+    
                     if (obj.isDuplicated(phone)) {
                         validPhone = false;
                     }
                 }
             }
-
             obj.addContact(new User(name, phone));
-            System.out.println("would you like to add another contacts ? enter Yes otherwise enter No");
+            System.out.println("Would you like to add another contact? Enter 'Yes' otherwise enter 'No'");
             String input = "";
             boolean validInput = false;
             while (!validInput) {
-                input = in.next().toLowerCase();
+                input = readLine(read).toLowerCase();
                 if (input.length() != 2 && !input.equals("no") && !input.equals("yes")) {
-                    System.out.println("invalid input");
+                    System.out.println("Invalid input");
                 } else if (input.equals("no")) {
                     validInput = true;
                     again = false;
@@ -221,8 +223,9 @@ class Methods extends User {
             }
         }
     }
+    
 
-    static void adminEditing(Scanner in, Contacts obj, User admin) {
+    static void adminEditing(BufferedReader read, Contacts obj, User admin) {
         boolean again = true;
         while (again) {
             if (obj.getContacts().isEmpty()) {
@@ -234,7 +237,7 @@ class Methods extends User {
             int index = 0;
 
             while (!validIndex) {
-                index = in.nextInt() - 1;
+                index = Integer.parseInt(readLine(read))- 1;
                 if (obj.validIndex(index)) {
                     validIndex = true;
                 }
@@ -245,7 +248,7 @@ class Methods extends User {
 
             while (!validName) {
                 System.out.println("Please enter the new name or your existing name");
-                name = in.next();
+                name = readLine(read);
                 if (Contact.validName(name)) {
                     System.out.println("Name has been updated");
                     validName = true;
@@ -256,7 +259,7 @@ class Methods extends User {
             String phone = "";
 
             while (!validPhone) {
-                phone = in.next();
+                phone = readLine(read);
                 if (admin.validPhone(phone)) {
                     validPhone = true;
 
@@ -274,7 +277,7 @@ class Methods extends User {
             String input = "";
             boolean validInput = false;
             while (!validInput) {
-                input = in.next().toLowerCase();
+                input = readLine(read).toLowerCase();
                 if (input.length() != 2 && !input.equals("no") && !input.equals("yes")) {
                     System.out.println("invalid input");
                 } else if (input.equals("no")) {
@@ -288,13 +291,13 @@ class Methods extends User {
         }
     }
 
-    static void adminDeleting(Scanner in, Contacts obj) {
+    static void adminDeleting(BufferedReader read, Contacts obj) {
         System.out.println("Would you like to delete all contacts at once? enter yes otherwise no");
         String isAll = "";
         boolean yes = false;
         boolean validInput2 = false;
         while (!validInput2) {
-            isAll = in.next().toLowerCase();
+            isAll = readLine(read).toLowerCase();
             if (isAll.length() != 2 && !isAll.equals("no") && !isAll.equals("yes")) {
                 System.out.println("invalid input, please Enter Yes or No");
             } else if (isAll.equals("no")) {
@@ -324,7 +327,7 @@ class Methods extends User {
                 int index = 0;
 
                 while (!validIndex) {
-                    index = in.nextInt() - 1;
+                    index = Integer.parseInt(readLine(read)) - 1;
                     if (obj.validIndex(index)) {
                         validIndex = true;
                     }
@@ -336,7 +339,7 @@ class Methods extends User {
                 String input = "";
                 boolean validInput = false;
                 while (!validInput) {
-                    input = in.next().toLowerCase();
+                    input = readLine(read).toLowerCase();
                     if (input.length() != 2 && !input.equals("no") && !input.equals("yes")) {
                         System.out.println("invalid input");
                     } else if (input.equals("no")) {
@@ -351,21 +354,21 @@ class Methods extends User {
         }
     }
 
-    static void adminPrinting(Scanner in, Contacts obj, User admin) {
+    static void adminDisplay(BufferedReader read, Contacts obj, User admin) {
         boolean again = true;
 
         while (again) {
             if (obj.getContacts().isEmpty()) {
-                System.out.println("Nothing to print, Exiting...");
+                System.out.println("Nothing to Display, Exiting...");
                 break; // exit the loop when the array is empty
             }
 
-            System.out.println("Please enter the Contact ID of the contact you want to print");
+            System.out.println("Please enter the Contact ID of the contact you want to Display");
             boolean validIndex = false;
             int index = 0;
 
             while (!validIndex) {
-                index = in.nextInt() - 1;
+                index = Integer.parseInt(readLine(read)) - 1;
                 if (obj.validIndex(index)) {
                     validIndex = true;
                 }
@@ -373,12 +376,12 @@ class Methods extends User {
 
             admin.printContact(index);
 
-            System.out.println("Would you like to print other Contacts? Enter 'Yes' otherwise enter 'No'");
+            System.out.println("Would you like to Display other Contacts? Enter 'Yes' otherwise enter 'No'");
             String input = "";
             boolean validInput = false;
 
             while (!validInput) {
-                input = in.next().toLowerCase();
+                input = readLine(read).toLowerCase();
                 if (input.length() != 2 && !input.equals("no") && !input.equals("yes")) {
                     System.out.println("Invalid input");
                 } else if (input.equals("no")) {
@@ -397,49 +400,49 @@ class Methods extends User {
                 (obj.getContacts().size() > 2 ? "s" : ""));
     }
 
-    static void adminAddingPrefixes(Scanner in, User admin) {
+    static void adminAddingPrefixes(BufferedReader read, User admin) {
         ArrayList<String> inp = new ArrayList<>();
         System.out.println("please enter the prefixes you want add .to exit enter q");
-        String input = in.next();
+        String input = readLine(read);
         while (!input.equals("q")) {
             inp.add(input);
-            input = in.next();
+            input = readLine(read);
         }
         admin.addPerefixes(inp);
     }
 
-    static void adminRemovingPrefixes(Scanner in, User admin) {
+    static void adminRemovingPrefixes(BufferedReader read, User admin) {
         ArrayList<String> inp = new ArrayList<>();
         System.out.println("please enter the prefixes you want to delete. to exit enter q");
-        String input = in.next();
+        String input = readLine(read);
         while (!input.equals("q")) {
             inp.add(input);
-            input = in.next();
+            input = readLine(read);
         }
         admin.removePrefixes(inp);
     }
 
-    static void adminAddingLength(Scanner in, User admin) {
+    static void adminAddingLength(BufferedReader read, User admin) {
         ArrayList<String> inp = new ArrayList<>();
         System.out.println("please enter the lengths you want to add . to exit enter q");
-        String input = in.next();
+        String input = readLine(read);
         while (!input.equals("q")) {
 
             if (Integer.parseInt(input) > 10) {
                 inp.add(String.valueOf(input));
             }
-            input = in.next();
+            input = readLine(read);
         }
         admin.addLength(inp);
     }
 
-    static void adminRemovingLength(Scanner in, User admin) {
+    static void adminRemovingLength(BufferedReader read,User admin) {
         ArrayList<String> inp = new ArrayList<>();
         System.out.println("please enter the lengths you want to delete . to exit enter q");
-        String input = in.next();
+        String input = readLine(read);
         while (!input.equals("q")) {
             inp.add(input);
-            input = in.next();
+            input = readLine(read);
         }
         admin.removeLength(inp);
     }
@@ -450,5 +453,36 @@ class Methods extends User {
 
     static void adminPrintingPrefixes(User admin) {
         admin.printPrefixes();
+    }
+
+    static void printFile() throws Exception {
+        if (!Contacts.contacts.isEmpty()) {
+            File file = new File("src/Contacts/Contacts.txt");
+            if (file.exists()) {
+                file.delete();
+            }
+            PrintWriter write = new PrintWriter(file);
+            for (int i = 0; i < Contacts.contacts.size(); i++) {
+                write.println("Contact ID: " + (i + 1));
+                write.println("Contact Name: " + Contacts.contacts.get(i).getName());
+                write.println("Contact Number: " + Contacts.contacts.get(i).getPhone()
+                        + (validPhoneForPrint(Contacts.contacts.get(i).getPhone()) ? " (valid) "
+                                : " \"Invalid phone number please Contact the user\""));
+                write.println();
+            }
+            System.out.println("Contacts printed to file: " + file.getAbsolutePath());
+            write.close();
+        } else {
+            System.out.println("No Contacts to print");
+        }
+    }
+    private static String readLine(BufferedReader reader) {
+        String line = null;
+        try {
+            line = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return line;
     }
 }

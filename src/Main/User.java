@@ -158,7 +158,6 @@ public class User extends Contact {
 
     @Override
     protected final boolean validPhone(String phone) {
-        phone = phone.trim(); // Remove leading and trailing spaces
         String regex;
         if (!changeablePrefixes.isEmpty() && !changeableLength.isEmpty()) {
             regex = "^(" + getPrefixRegex() + ")\\d{" + getLengthRegex() + "}$";
@@ -192,8 +191,8 @@ public class User extends Contact {
             return false;
         }
     }
-    protected final boolean validPhoneForPrint(String phone) {
-        phone = phone.trim(); // Remove leading and trailing spaces
+
+    protected final static boolean validPhoneForPrint(String phone) {
         String regex;
         if (!changeablePrefixes.isEmpty() && !changeableLength.isEmpty()) {
             regex = "^(" + getPrefixRegex() + ")\\d{" + getLengthRegex() + "}$";
@@ -207,11 +206,12 @@ public class User extends Contact {
         if (phone.matches(regex)) {
             return true;
         }
-            return false;
+        return false;
     }
 
-    private String getLengthRegex() { // this method returns the length from their arraylist an put them into a string
-                                      // which will be put in the regex in the validation method later
+    private static String getLengthRegex() { // this method returns the length from their arraylist an put them into a
+                                             // string
+        // which will be put in the regex in the validation method later
         StringBuilder lengthRegex = new StringBuilder();
         for (String length : changeableLength) {
             int length1 = Integer.parseInt(length) - 3;
@@ -224,8 +224,8 @@ public class User extends Contact {
         return lengthRegex.toString();
     }
 
-    private String getPrefixRegex() { // this method returns the prefixes from their arraylist an put them into a
-                                      // string which will be put in the regex in the validation method later
+    private static String getPrefixRegex() { // this method returns the prefixes from their arraylist an put them into a
+        // string which will be put in the regex in the validation method later
         StringBuilder prefixRegex = new StringBuilder();
         for (String prefix : changeablePrefixes) {
             prefixRegex.append(prefix).append("|");
@@ -236,9 +236,10 @@ public class User extends Contact {
         return prefixRegex.toString();
     }
 
-    private String getDefaultPrefixRegex() { // this method returns the default prefixes from their arraylist an put
-                                             // them into a string which will be put in the regex in the validation
-                                             // method later this method was made to avoid using loops for checking
+    private static String getDefaultPrefixRegex() { // this method returns the default prefixes from their arraylist an
+                                                    // put
+        // them into a string which will be put in the regex in the validation
+        // method later this method was made to avoid using loops for checking
 
         StringBuilder prefixRegex = new StringBuilder();
         for (String prefix : defaultVali) {
@@ -247,25 +248,31 @@ public class User extends Contact {
         prefixRegex.setLength(prefixRegex.length() - 1);
         return prefixRegex.toString().trim();
     }
-    public void printAll() {
+
+    public void displayAll() {
         if (Contacts.contacts.isEmpty()) {
             System.err.println("No Contacts to print");
         } else {
             for (int i = 0; i < Contacts.contacts.size(); i++) {
                 System.out.println("contact ID : " + (i + 1));
                 System.out.println("Contact Name : " + Contacts.contacts.get(i).getName());
-                System.out.println("Contact Number : " + Contacts.contacts.get(i).getPhone() + (validPhoneForPrint(Contacts.contacts.get(i).getPhone()) ? " Valid" : " Invalid phone number please Contact the user"));
+                System.out.println("Contact Number : " + Contacts.contacts.get(i).getPhone()
+                        + (validPhoneForPrint(Contacts.contacts.get(i).getPhone()) ? " (valid)"
+                                : " \"Invalid phone number please Contact the user\""));
                 System.out.println();
             }
         }
     }
-    
+
     public void printContact(int index) {
         if ((index) >= 0 && index < Contacts.contacts.size()) {
             System.out.println("Contact Name : " + Contacts.contacts.get(index).getName());
-            System.out.println(" Contact Number : " + Contacts.contacts.get(index).getPhone() + (validPhoneForPrint(Contacts.contacts.get(index).getPhone()) ? " Valid" : " Invalid phone number please Contact the user"));
+            System.out.println(" Contact Number : " + Contacts.contacts.get(index).getPhone()
+                    + (validPhoneForPrint(Contacts.contacts.get(index).getPhone()) ? " (valid)"
+                            : " \"Invalid phone number please Contact the user\""));
         } else {
             System.err.println("This Contact doesn't exist");
         }
     }
+    
 }
