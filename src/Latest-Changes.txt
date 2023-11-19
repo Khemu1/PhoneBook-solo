@@ -9,3 +9,5 @@ made the arraylists in the Admin class static
 removed all the methods from  Main and instead used calling from methods
 removed User class and renamed Admin to User
 Admin a boolean attribute isAdmin to check if for user and Admin modes
+moved the print methods into Admin to able to check for valid phone numbers if the admin changed any of the constraints
+added a new method to check for validation while printing contacts

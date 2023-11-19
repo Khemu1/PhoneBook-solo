@@ -119,9 +119,9 @@ class Methods extends User {
                 Methods.adminDeleting(in, obj);
             }
             case "4" -> {
-                Methods.adminPrinting(in, obj);
+                Methods.adminPrinting(in, obj,admin);
             }
-            case "5" -> obj.printAll();
+            case "5" -> admin.printAll();
             case "6" -> Methods.adminPrintingAmountOfContacts(obj);
             case "7" -> {
                 boolean exit1 = false;
@@ -351,7 +351,7 @@ class Methods extends User {
         }
     }
 
-    static void adminPrinting(Scanner in, Contacts obj) {
+    static void adminPrinting(Scanner in, Contacts obj, User admin) {
         boolean again = true;
 
         while (again) {
@@ -371,7 +371,7 @@ class Methods extends User {
                 }
             }
 
-            obj.printContact(index);
+            admin.printContact(index);
 
             System.out.println("Would you like to print other Contacts? Enter 'Yes' otherwise enter 'No'");
             String input = "";

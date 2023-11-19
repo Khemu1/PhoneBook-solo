@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 public class Contacts {
-    private static ArrayList<Contact> contacts = new ArrayList<>();
+    static ArrayList<Contact> contacts = new ArrayList<>();
 
     public Contacts() {
     }
@@ -76,28 +76,5 @@ public class Contacts {
             }
         }
         return false;
-    }
-
-    public void printAll() {
-        if (contacts.isEmpty()) {
-            System.err.println("No Contacts to print");
-        } else {
-            for (int i = 0; i < contacts.size(); i++) {
-                System.out.println("contact ID : " + (i + 1));
-                System.out.println("Contact Name : " + contacts.get(i).getName());
-                System.out.println("Contact Number : " + contacts.get(i).getPhone());
-                System.out.println();
-            }
-        }
-
-    }
-
-    public void printContact(int index) {
-        if ((index) >= 0 && index < contacts.size()) {
-            System.out.println("Contact Name :" + contacts.get(index).getName());
-            System.out.println(" Contact Number : " + contacts.get(index).getPhone());
-        } else {
-            System.err.println("this Contact doesn't exist");
-        }
     }
 }
