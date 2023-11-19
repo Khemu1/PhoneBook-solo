@@ -455,7 +455,7 @@ class Methods extends User {
         admin.printPrefixes();
     }
 
-    static void printFile() BufferedReader read, Exception {
+    static void printFile() throws Exception {
         if (!Contacts.contacts.isEmpty()) {
             File file = new File("src/Contacts/Contacts.txt");
             if (file.exists()) {
